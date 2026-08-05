@@ -11,7 +11,9 @@ public:
 };
 void Problem1()
 {
-    Player.Print();
+   // Player.Print(); ERROR
+    Player player; // FIX
+    player.Print(); // FIX
     std::cin.get();
 }
 
@@ -19,7 +21,8 @@ void Problem2()
 {
     std::vector<int> scores;
 
-    scores[0] = 100;
+   // scores[0] = 100; ERROR
+    scores.push_back(100); // FIX
 
     std::cout << scores[0];
     std::cin.get();
@@ -29,7 +32,9 @@ void Problem3()
 {
     int* number;
 
-    *number = 5;
+    //*number = 5;
+    int value = 5;
+    *number = &value;
 
     cout << *number;
     std::cin.get();
@@ -38,10 +43,11 @@ void Problem3()
 void Problem4()
 {
     int* data = new int;
+    delete data;//FIX to move the delete up before overwriting pointer
 
-    data = new int;
+    data = new int; 
 
-    delete data;
+    delete data;// ERROR
     std::cin.get();
 }
 
@@ -113,10 +119,11 @@ int* Problem8()
 void Problem9()
 {
     Player* player = new Player();
+    player->Print(); // FIX
 
     delete player;
 
-    player->Print();
+    //player->Print(); // ERROR
     std::cin.get();
 }
 
@@ -136,7 +143,6 @@ public:
         delete data;
     }
 };
-
 void Problem10()
 {
     MonsterInventory a;
