@@ -42,7 +42,8 @@ void Problem4()
     int second = 20; 
     int* number = &first; 
     std::cout << *number << "\n"; 
-    number = &second; *number = 50; 
+    number = &second; 
+    *number = 50; 
     std::cout << first << "\n"; 
     std::cout << second << "\n";
 

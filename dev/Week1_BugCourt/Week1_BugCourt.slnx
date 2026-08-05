@@ -4,5 +4,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Week1_BugCourt/Week1_BugCourt.vcxproj" />
+  <Project Path="Week1_BugCourt/Week1_BugCourt.vcxproj" Id="9834d02f-ab2a-4d3a-ba7f-de46f0ae2ab8" />
 </Solution>
