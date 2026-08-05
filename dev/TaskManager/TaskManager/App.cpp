@@ -1,4 +1,5 @@
 #include "App.h"
+
 App::App()
 {
 	isRunning = true;
