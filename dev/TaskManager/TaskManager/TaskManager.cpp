@@ -1,12 +1,12 @@
 #include "TaskManager.h"
 #include <iostream>
-
+//Adds the task to the vector and provides feedback to the user
 void TaskManager::AddTask(std::string title)
 {
 	tasks.push_back(Task(title));
 	std::cout << "\nTask added to the crypt.\n";
 }
-
+// showing the tasks in the vector, first checks if empty to not throw an error
 void TaskManager::ViewTasks() const
 {
 	std::cout << "\n==== TASK CRYPT ====\n";

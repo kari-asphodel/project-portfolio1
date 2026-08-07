@@ -1,10 +1,10 @@
 #include "App.h"
-
+// This constructor sets the isRunning boolean to true 
 App::App()
 {
 	isRunning = true;
 }
-
+// Starts the task manager and menu loop
 void App::Run()
 {
 	std::cout << "Welcome to the Crypt Keeper Productivity Program.\n";
@@ -22,6 +22,7 @@ void App::Run()
 		HandleChoice(choice);
 	}
 }
+// displays menu options and asks for user input
 void App::DisplayMenu() const
 {
 	std::cout << "\n ==== CRYPT KEEPER ====\n";
@@ -31,12 +32,12 @@ void App::DisplayMenu() const
 	std::cout << "4. Exit\n";
 	std::cout << "Choose an option between 1 and 4: ";
 }
-
+// Handling whatever option the user selects
 void App::HandleChoice(int choice)
 {
-	std::string taskTitle;
+	std::string taskTitle; // variable for case 1
 
-	switch (choice)
+	switch (choice) // looks at choice to determine what case to run
 	{
 	case 1:
 		// Add Task
