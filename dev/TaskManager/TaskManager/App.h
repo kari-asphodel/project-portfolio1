@@ -1,6 +1,7 @@
 #pragma once
 #include "TaskManager.h"
 #include <iostream>
+// This class controls user input, and menu functionality
 class App
 {
 private:

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+// this class manages the single task object
 class Task
 {
 private:
