@@ -39,7 +39,7 @@ void TaskManager::ViewCompletedTasks() const
 	}
 }
 
-void TaskMananger::CompleteTask(int index)
+void TaskManager::CompleteTask(int index)
 {
 	if (index >= 0 && index < activeTasks.size())
 	{
@@ -54,7 +54,7 @@ void TaskMananger::CompleteTask(int index)
 	}
 }
 
-int TaskManger::GetActiveTaskCount() const
+int TaskManager::GetActiveTaskCount() const
 {
 	return activeTasks.size();
 }

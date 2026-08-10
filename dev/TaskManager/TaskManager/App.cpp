@@ -52,7 +52,7 @@ void App::DisplayMenu() const
 	std::cout << "1. Add Task\n";
 	std::cout << "2. View Tasks\n";
 	std::cout << "3. Complete Task\n";
-	std::cout << "4.View Completed Tasks\n";
+	std::cout << "4. View Completed Tasks\n";
 	std::cout << "5. View Progress Summary\n";
 	std::cout << "6. Exit\n";
 	std::cout << "Choose an option between 1 and 6: ";
@@ -73,7 +73,7 @@ void App::HandleChoice(int choice)
 		break;
 	case 2:
 		// View Tasks
-		manager.ViewTasks();
+		manager.ViewActiveTasks();
 		break;
 	case 3:
 		// complete tasks
