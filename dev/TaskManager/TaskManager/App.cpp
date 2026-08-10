@@ -50,7 +50,7 @@ void App::DisplayMenu() const
 {
 	std::cout << "\n ==== CRYPT KEEPER ====\n";
 	std::cout << "1. Add Task\n";
-	std::cout << "2. View Tasks\n";
+	std::cout << "2. View Active Tasks\n";
 	std::cout << "3. Complete Task\n";
 	std::cout << "4. View Completed Tasks\n";
 	std::cout << "5. View Progress Summary\n";
