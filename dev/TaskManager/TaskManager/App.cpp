@@ -8,34 +8,60 @@ App::App()
 void App::Run()
 {
 	std::cout << "Welcome to the Crypt Keeper Productivity Program.\n";
-	std::cout << "Let us organize the choas before it organizes us.\n";
+	std::cout << "Today, the crypt learns to survive user chaos\n";
 
 	while (isRunning)
 	{
 		DisplayMenu();
 
-		std::string input;
-		std::getline(std::cin, input);
-
-		int choice = std::stoi(input);
+		int choice = GetValidatedInputInRange(1, 6);
 
 		HandleChoice(choice);
 	}
+	std::cout << "\nGoodbye, may your task list stay only mildly cursed.\n";
 }
+
+int App::GetValidatedInputInRange(int min, int max)
+{
+	std::string input; 
+	int number;
+	while (true)
+	{
+		std::getline(std::cin, input);
+		try // trys the risky code
+		{
+			number = std::stoi(input);
+			if (number >= min && number <= max)
+			{
+				return number;
+			}
+			std::cout << "Invalid input, please enter a number between " << min << " and " << max << ": ";
+
+		}
+		catch (...) //catch all for any other input you do not want
+		{
+			std::cout << "Invalid input, please enter a number between " << min << " and " << max << ": ";
+		}
+	}
+}
+
 // displays menu options and asks for user input
 void App::DisplayMenu() const
 {
 	std::cout << "\n ==== CRYPT KEEPER ====\n";
 	std::cout << "1. Add Task\n";
 	std::cout << "2. View Tasks\n";
-	std::cout << "3. Complete Task ~Not Yet Added~\n";
-	std::cout << "4. Exit\n";
-	std::cout << "Choose an option between 1 and 4: ";
+	std::cout << "3. Complete Task\n";
+	std::cout << "4.View Completed Tasks\n";
+	std::cout << "5. View Progress Summary\n";
+	std::cout << "6. Exit\n";
+	std::cout << "Choose an option between 1 and 6: ";
 }
 // Handling whatever option the user selects
 void App::HandleChoice(int choice)
 {
 	std::string taskTitle; // variable for case 1
+	int taskNumber; // variable for case 3
 
 	switch (choice) // looks at choice to determine what case to run
 	{
@@ -51,9 +77,22 @@ void App::HandleChoice(int choice)
 		break;
 	case 3:
 		// complete tasks
-		std::cout << "\nComplete task is still sealed inside a future issue.\n";
+		if (manager.GetActiveTaskCount() == 0)
+		{
+			std::cout << "\nThere are no active tasks to complete.\n";
+			return;
+		}
+		manager.ViewActiveTasks();
+		std::cout << "\nEnter the task number to completed:\n";
+		taskNumber = GetValidatedInputInRange(1, manager.GetActiveTaskCount());
+		manager.CompleteTask(taskNumber - 1);
 		break;
-	case 4: 
+	case 4:
+		manager.ViewCompletedTasks();
+		break;
+	case 5:
+		manager.DisplaySummary();
+	case 6: 
 		isRunning = false;
 		std::cout << "\nThe crypt has been sealed. Goodbye\n";
 		break;
