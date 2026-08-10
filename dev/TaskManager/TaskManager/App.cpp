@@ -92,6 +92,7 @@ void App::HandleChoice(int choice)
 		break;
 	case 5:
 		manager.DisplaySummary();
+		break;
 	case 6: 
 		isRunning = false;
 		std::cout << "\nThe crypt has been sealed. Goodbye\n";
