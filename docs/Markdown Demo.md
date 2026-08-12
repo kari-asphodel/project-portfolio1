@@ -65,4 +65,4 @@ int main()
 
 Links:
 
-[MarkDownGuide](www.markdownguide.org/basic-syntax/)
+[MarkDownGuide](https://www.markdownguide.org/basic-syntax/)
