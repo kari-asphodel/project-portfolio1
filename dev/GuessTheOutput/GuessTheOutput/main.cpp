@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 void Round1()
 {
@@ -10,6 +11,7 @@ void Round1()
     }
 
     std::cout << total;
+    std::cin.get();
     // A. 3
     // B. 6
     // C. 9
