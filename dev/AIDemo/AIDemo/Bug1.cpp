@@ -1,40 +1,53 @@
 #include <iostream>
 #include <vector>
-using namespace std;
+//using namespace std;
 
 int main()
 {
-    vector<int> scores;
+    std::vector<int> scores;
 
     while (true)
     {
-        cout << "1. Add Score\n";
-        cout << "2. Show Scores\n";
-        cout << "3. Exit\n";
+        std::cout << "1. Add Score\n";
+        std::cout << "2. Show Scores\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Enter a number between 1 and 3: ";
+        try
+        {
+            std::string input;
+            int choice;
 
-        int choice;
-        cin >> choice;
+            std::cin >> input;
 
+            choice = std::stoi(input);
+            break;
+
+        }
+        catch (...)
+        {
+            std::cout << "That option does not exist.";
+        }
+    }
         if (choice == 1)
         {
             int score;
-            cout << "Score: ";
-            cin >> score;
+            std::cout << "Score: ";
+            std::cin >> score;
 
             scores.push_back(score);
         }
 
         if (choice == 2)
         {
-            for (int i = 0; i <= scores.size(); i++)
+            for (int i = 0; i < scores.size(); i++)
             {
-                cout << scores[i] << endl;
+                std::cout << scores[i] << std::endl;
             }
         }
 
         if (choice == 3)
         {
-            exit(0);
+            std::cout << "Goodbye.";
         }
-    }
+    
 }
