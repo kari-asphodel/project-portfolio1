@@ -1,5 +1,6 @@
 #include "TaskManager.h"
 #include <iostream>
+#include <algorithm>
 //Adds the task to the vector and provides feedback to the user
 void TaskManager::AddTask(std::string title, Priority priority, std::string category)
 {
@@ -69,4 +70,45 @@ void DisplayTaskList(const std::vector<Task>& taskList, std::string heading) con
 			<< taskList[i].GetCategory()
 			<< "\n";
 	}
+}
+
+
+void TaskManager::SortActiveTasksByPriority()
+{
+	std::sort(
+		activeTasks.begin(),
+		activeTasks.end(),
+		[](const Task& first, const Task& second)
+		{
+			return static_cast<int>(first.GetPriority()) > static_cast<int>(second.GetPriority());
+		});
+
+	std::cout << "\nActive tasks sorted by priority. The loudest demons rise first.\n";
+}
+
+void TaskManager::ViewTasksByPriority(Priority priority) const
+{
+	std::vector<Task> filterTasks;
+
+	for (int i = 0; i < activeTasks.size(); i++)
+	{
+		if (activeTasks[i].GetPriority() == priority)
+		{
+			filterTasks.push_back(activeTasks[i]);
+		}
+	}
+	std::string heading;
+	if (priority == Priority::High)
+	{
+		heading = "HIGH PRIORITY TASKS";
+	}
+	else if (priority == Priority::Medium)
+	{
+		heading = "MEDIUM PRIORITY TASKS";
+	}
+	else
+	{
+		heading = "LOW PRIORITY TASKS";
+	}
+	DisplayTaskList(filterTasks, heading);
 }
