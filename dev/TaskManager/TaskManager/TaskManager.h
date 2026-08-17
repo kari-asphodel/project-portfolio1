@@ -13,7 +13,7 @@ private:
 
 public:
 
-	void AddTask(std::string title, Priority priority, std:string category);
+	void AddTask(std::string title, Priority priority, std::string category);
 	void ViewActiveTasks()const;
 	void ViewCompletedTasks()const;
 	void ViewTasksByPriority(Priority priority) const;

@@ -52,7 +52,7 @@ void TaskManager::DisplaySummary() const
 		<< "\n";
 }
 
-void DisplayTaskList(const std::vector<Task>& taskList, std::string heading) const
+void TaskManager::DisplayTaskList(const std::vector<Task>& taskList, std::string heading) const
 {
 	std::cout << "\n==== "<< heading <<" ====\n";
 	if (taskList.empty())

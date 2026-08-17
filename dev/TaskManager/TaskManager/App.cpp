@@ -8,13 +8,13 @@ App::App()
 void App::Run()
 {
 	std::cout << "Welcome to the Crypt Keeper Productivity Program.\n";
-	std::cout << "Today, the crypt learns to survive user chaos\n";
+	std::cout << "Today, we expand the crypt without collapsing it.\n";
 
 	while (isRunning)
 	{
 		DisplayMenu();
 
-		int choice = GetValidatedInputInRange(1, 6);
+		int choice = GetValidatedInputInRange(1, 8);
 
 		HandleChoice(choice);
 	}
@@ -48,9 +48,9 @@ int App::GetValidatedInputInRange(int min, int max)
 Priority App::GetPriorityFromUser()
 {
 	std::cout << "\nChoose a task priority:\n";
-	std::cout << "1. Low";
-	std::cout << "2. Medium";
-	std::cout << "3. High";
+	std::cout << "1. Low\n";
+	std::cout << "2. Medium\n";
+	std::cout << "3. High\n";
 	std::cout << "Choose and option between 1 and 3: ";;
 	int choice = GetValidatedInputInRange(1, 3);
 	Priority usersChoice;
@@ -78,8 +78,10 @@ void App::DisplayMenu() const
 	std::cout << "3. Complete Task\n";
 	std::cout << "4. View Completed Tasks\n";
 	std::cout << "5. View Progress Summary\n";
-	std::cout << "6. Exit\n";
-	std::cout << "Choose an option between 1 and 6: ";
+	std::cout << "6. Sort Active Tasks by Priority\n";
+	std::cout << "7. Filter Active Tasks by Priority\n";
+	std::cout << "8. Exit\n";
+	std::cout << "Choose an option between 1 and 8: ";
 }
 // Handling whatever option the user selects
 void App::HandleChoice(int choice)
@@ -88,6 +90,7 @@ void App::HandleChoice(int choice)
 	int taskNumber; // variable for case 3
 	Priority priority;// variable for case 1
 	std::string category;//variable for case 1
+	Priority filteredPriority; // variable for case 7
 
 	switch (choice) // looks at choice to determine what case to run
 	{
@@ -122,11 +125,20 @@ void App::HandleChoice(int choice)
 	case 5:
 		manager.DisplaySummary();
 		break;
-	case 6: 
+	case 6:
+		manager.SortActiveTasksByPriority();
+		break;
+	case 7:
+		std::cout << "\nChoose a priority to filter by.";
+		filteredPriority = GetPriorityFromUser();
+		manager.ViewTasksByPriority(filteredPriority);
+		break;
+	case 8: 
 		isRunning = false;
 		std::cout << "\nThe crypt has been sealed. Goodbye\n";
 		break;
 	default:
 		std::cout << "\nThat option does not exist in this crypt.\n";
+		break;
 	}
 }
