@@ -9,6 +9,7 @@ int main()
         std::cout << "You attack!\n";
         std::cout << "Enemy health: "
             << enemyHealth << '\n';
+        enemyHealth -= 10;
     }
 
     std::cout << "Enemy defeated!\n";

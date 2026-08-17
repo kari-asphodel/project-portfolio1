@@ -2,16 +2,14 @@
 
 int* CreateScore()
 {
-    int score = 100;
-
-    return &score;
+    return 100;
 }
 
 int main()
 {
-    int* scorePtr = CreateScore();
+    int score = CreateScore();
 
-    std::cout << *scorePtr << '\n';
+    std::cout << *score << '\n';
 
     return 0;
 }

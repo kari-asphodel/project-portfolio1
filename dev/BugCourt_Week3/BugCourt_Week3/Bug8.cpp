@@ -7,7 +7,6 @@ int main()
     std::cout << *number << '\n';
 
     delete number;
-    delete number;
-
+    number = nullptr;
     return 0;
 }
