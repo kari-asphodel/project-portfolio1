@@ -86,6 +86,8 @@ void App::HandleChoice(int choice)
 {
 	std::string taskTitle; // variable for case 1
 	int taskNumber; // variable for case 3
+	Priority priority;// variable for case 1
+	std::string category;//variable for case 1
 
 	switch (choice) // looks at choice to determine what case to run
 	{
@@ -93,7 +95,10 @@ void App::HandleChoice(int choice)
 		// Add Task
 		std::cout << "\nEnter the task title: ";
 		std::getline(std::cin, taskTitle);
-		manager.AddTask(taskTitle);
+		priority = GetPriorityFromUser();
+		std::cout << "\nEnter the task category, such as Code, Design, Testing, or Docs: ";
+		std::getline(std::cin, category);
+		manager.AddTask(taskTitle, priority, category);
 		break;
 	case 2:
 		// View Tasks
