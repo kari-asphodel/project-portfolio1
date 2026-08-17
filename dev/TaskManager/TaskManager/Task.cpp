@@ -1,8 +1,10 @@
 #include "Task.h"
 // Creates the individual task
-Task::Task(std::string taskTitle)
+Task::Task(std::string taskTitle, Priority taskPriority, std::string taskCategory)
 {
 	title = taskTitle;
+	priority = taskPriority;
+	category = taskCategory;
 	completed = false;
 }
 // getter to access the title
@@ -19,4 +21,26 @@ bool Task::IsCompleted() const
 void Task::CompleteTask()
 {
 	completed = true;
+}
+
+std::string Task::GetCategory() const
+{
+	return category;
+}
+Priority Task::GetPriority() const
+{
+	return priority;
+}
+
+std::string Task::GetPriorityText() const
+{
+	if (priority == Priority::High)
+	{
+		return "High";
+	}
+	else if (priority == Priority::Medium)
+	{
+		return "Medium";
+	}
+	return "Low";
 }
