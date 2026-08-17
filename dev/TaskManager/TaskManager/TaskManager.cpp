@@ -1,9 +1,9 @@
 #include "TaskManager.h"
 #include <iostream>
 //Adds the task to the vector and provides feedback to the user
-void TaskManager::AddTask(std::string title)
+void TaskManager::AddTask(std::string title, Priority priority, std::string category)
 {
-	activeTasks.push_back(Task(title));
+	activeTasks.push_back(Task(title, priority, category));
 	std::cout << "\nTask added to the crypt.\n";
 }
 // showing the tasks in the vector, first checks if empty to not throw an error

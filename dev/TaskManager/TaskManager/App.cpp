@@ -45,6 +45,30 @@ int App::GetValidatedInputInRange(int min, int max)
 	}
 }
 
+Priority App::GetPriorityFromUser()
+{
+	std::cout << "\nChoose a task priority:\n";
+	std::cout << "1. Low";
+	std::cout << "2. Medium";
+	std::cout << "3. High";
+	std::cout << "Choose and option between 1 and 3: ";;
+	int choice = GetValidatedInputInRange(1, 3);
+	Priority usersChoice;
+	switch (choice)
+	{
+	case 1:
+		usersChoice = Priority::Low;
+		break;
+	case 2:
+		usersChoice = Priority::Medium;
+		break;
+	case 3:
+		usersChoice = Priority::High;
+		break;
+	}
+	return usersChoice;
+}
+
 // displays menu options and asks for user input
 void App::DisplayMenu() const
 {
