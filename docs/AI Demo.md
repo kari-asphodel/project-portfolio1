@@ -79,5 +79,6 @@ Tell AI what success looks like.
 ### Ask
 ❓ Why is expected behavior important when debugging?
 ### Answer
+
 We cannot identify incorrect behavior unless we first define correct
 behavior.

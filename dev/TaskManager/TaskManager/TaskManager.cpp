@@ -1,42 +1,21 @@
 #include "TaskManager.h"
 #include <iostream>
+#include <algorithm>
 //Adds the task to the vector and provides feedback to the user
-void TaskManager::AddTask(std::string title)
+void TaskManager::AddTask(std::string title, Priority priority, std::string category)
 {
-	activeTasks.push_back(Task(title));
+	activeTasks.push_back(Task(title, priority, category));
 	std::cout << "\nTask added to the crypt.\n";
 }
 // showing the tasks in the vector, first checks if empty to not throw an error
 void TaskManager::ViewActiveTasks() const
 {
-	std::cout << "\n==== ACTIVE TASKS ====\n";
-	if (activeTasks.empty())
-	{
-		std::cout << "No active tasks. The crypt is quiet... suspiciously quiet...\n";
-		return;
-	}
-	for (int i = 0; i < activeTasks.size(); i++)
-	{
-		std::cout << i + 1 << ". "
-			               << activeTasks[i].GetTitle()
-			               << "\n";
-	}
+	DisplayTaskList(activeTasks, "ACTIVE TASKS");
 }
 // showing the tasks in the vector, first checks if empty to not throw an error
 void TaskManager::ViewCompletedTasks() const
 {
-	std::cout << "\n==== COMPLETED TASKS ====\n";
-	if (completedTasks.empty())
-	{
-		std::cout << "No completed tasks. The ghosts remain employed\n";
-		return;
-	}
-	for (int i = 0; i < completedTasks.size(); i++)
-	{
-		std::cout << i + 1 << ". "
-			<< completedTasks[i].GetTitle()
-			<< "\n";
-	}
+	DisplayTaskList(completedTasks, "COMPLETED TASKS");
 }
 
 void TaskManager::CompleteTask(int index)
@@ -71,4 +50,65 @@ void TaskManager::DisplaySummary() const
 	std::cout << "Total Tasks Created: "
 		<< activeTasks.size() + completedTasks.size()
 		<< "\n";
+}
+
+void TaskManager::DisplayTaskList(const std::vector<Task>& taskList, std::string heading) const
+{
+	std::cout << "\n==== "<< heading <<" ====\n";
+	if (taskList.empty())
+	{
+		std::cout << "No tasks found. The crypt is empty\n";
+		return;
+	}
+	for (int i = 0; i < taskList.size(); i++)
+	{
+		std::cout << i + 1 << ". "
+			<< taskList[i].GetTitle()
+			<< " | Priority: "
+			<< taskList[i].GetPriorityText()
+			<< " | Category: "
+			<< taskList[i].GetCategory()
+			<< "\n";
+	}
+}
+
+
+void TaskManager::SortActiveTasksByPriority()
+{
+	std::sort(
+		activeTasks.begin(),
+		activeTasks.end(),
+		[](const Task& first, const Task& second)
+		{
+			return static_cast<int>(first.GetPriority()) > static_cast<int>(second.GetPriority());
+		});
+
+	std::cout << "\nActive tasks sorted by priority. The loudest demons rise first.\n";
+}
+
+void TaskManager::ViewTasksByPriority(Priority priority) const
+{
+	std::vector<Task> filterTasks;
+
+	for (int i = 0; i < activeTasks.size(); i++)
+	{
+		if (activeTasks[i].GetPriority() == priority)
+		{
+			filterTasks.push_back(activeTasks[i]);
+		}
+	}
+	std::string heading;
+	if (priority == Priority::High)
+	{
+		heading = "HIGH PRIORITY TASKS";
+	}
+	else if (priority == Priority::Medium)
+	{
+		heading = "MEDIUM PRIORITY TASKS";
+	}
+	else
+	{
+		heading = "LOW PRIORITY TASKS";
+	}
+	DisplayTaskList(filterTasks, heading);
 }

@@ -11,7 +11,7 @@ private:
 	void DisplayMenu() const;
 	void HandleChoice(int choice);
 	int GetValidatedInputInRange(int min, int max);
-
+	Priority GetPriorityFromUser();
 public:
 	App();
 	void Run();
