@@ -1,7 +1,7 @@
 #include <fstream>
 void SavePlayer(std::string name, int level)
 {
-    std::ofstream file("player.txt");
+    std::ofstream file("player.txt", std::ios::app);
 
     file << name << '\n';
     file << level << '\n';

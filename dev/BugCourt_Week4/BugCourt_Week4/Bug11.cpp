@@ -5,11 +5,19 @@ void Bug11()
 {
 	std::ifstream file("save.txt");
 
-	std::string playerName;
-	int level;
+	if (file.is_open())
+	{
+		std::string playerName;
+		int level;
 
-	file >> playerName;
-	file >> level;
+		file >> playerName;
+		file >> level;
 
-	std::cout << playerName << " Level " << level;
+		std::cout << playerName << " Level " << level;
+	}
+	else
+	{
+		std::cout << "No save file found";
+	}
 }
+

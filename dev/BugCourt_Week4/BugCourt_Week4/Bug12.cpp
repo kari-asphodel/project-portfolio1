@@ -12,3 +12,22 @@ private:
     std::string name;
     int damage;
 };
+
+/*
+#include "Weapon.h"
+
+Weapon::Weapon(std::string name, int damage)
+{
+    this->name = name;
+    this->damage = damage;
+}
+
+std::string Weapon::GetName()
+{
+    return name;
+}
+
+int Weapon::GetDamage()
+{
+    return damage;
+}*/

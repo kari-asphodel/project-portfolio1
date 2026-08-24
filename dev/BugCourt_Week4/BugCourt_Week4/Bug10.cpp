@@ -5,7 +5,15 @@ void Bug10()
 {
     std::vector<std::string> enemies;
 
-    std::cout << "First enemy: "
-        << enemies[0]
-        << '\n';
+    if (!enemies.empty())
+    {
+        std::cout << "First enemy: "
+            << enemies[0]
+            << '\n';
+
+    }
+    else
+    {
+        std::cout << "No enemies exist";
+    }
 }

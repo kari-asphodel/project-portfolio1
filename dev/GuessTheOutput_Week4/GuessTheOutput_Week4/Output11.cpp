@@ -41,7 +41,7 @@ private:
 void Output11()
 {
     Weapon sword(6);
-    Player player;
+    Player player; // health starts at 20 and -= everytime damange is takken
 
     player.TakeDamage(sword);
     player.TakeDamage(sword);
@@ -51,6 +51,6 @@ void Output11()
 
 
 //A 6
-//B 8
+//B 8 - THIS ONE
 //C 14
 //D 20
