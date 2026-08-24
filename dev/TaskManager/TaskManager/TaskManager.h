@@ -13,7 +13,7 @@ private:
 
 	void WriteStringBinary(std::ofstream& file, const std::string& text) const;
 	std::string ReadStringBinary(std::ifstream& file) const;
-
+	Priority ConvertTextPriority(std::string textPriority);
 public:
 
 	void AddTask(std::string title, Priority priority, std::string category);
@@ -33,6 +33,7 @@ public:
 
 	void SaveToBinaryFile(std::string fileName) const;
 	void LoadFromBinaryFile(std::string fileName);
+
 
 };
 

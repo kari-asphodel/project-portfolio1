@@ -11,7 +11,7 @@ Task::Task(std::string taskTitle, Priority taskPriority, std::string taskCategor
 Task::Task()
 {
 	title = "";
-	priority = 1;
+	priority = Priority::Low;
 	category = "General";
 	completed = false;
 }

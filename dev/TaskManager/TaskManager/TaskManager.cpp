@@ -37,7 +37,7 @@ void TaskManager::CompleteTask(int index)
 
 int TaskManager::GetActiveTaskCount() const
 {
-	return activeTasks.size();
+	return (int)activeTasks.size();
 }
 
 void TaskManager::DisplaySummary() const
@@ -159,10 +159,11 @@ void TaskManager::LoadFromTextFile(std::string fileName)
 		std::string category;
 		std::string completedText;
 
-		std::getline(stream, title, "|");
-		std::getline(stream, stringPriority, "|");
-		std::getline(stream, category, "|");
-		std::getline(stream, completedText, "|");
+
+		std::getline(stream, title, '|');
+		std::getline(stream, stringPriority, '|');
+		std::getline(stream, category, '|');
+		std::getline(stream, completedText, '|');
 
 		bool isCompleted = completedText == "1";
 		Priority priority;
@@ -223,20 +224,20 @@ void TaskManager::SaveToBinaryFile(std::string fileName) const
 	int activeCount = static_cast<int>(activeTasks.size());
 	int completedCount = static_cast<int>(completedTasks.size());
 
-	file.write(reinterpret_cast<char*>(&activeCount), sizeof(activeCount);
+	file.write(reinterpret_cast<char*>(&activeCount), sizeof(activeCount));
 
 	for (int i = 0; i < activeTasks.size(); i++)
 	{
 		WriteStringBinary(file, activeTasks[i].GetTitle());
-		WriteStringBinary(file, activeTasks[i].GetPriority());
+		WriteStringBinary(file, activeTasks[i].GetPriorityText());
 		WriteStringBinary(file, activeTasks[i].GetCategory());
 	}
-	file.write(reinterpret_cast<char*>(&completedCount), sizeof(completedCount);
+	file.write(reinterpret_cast<char*>(&completedCount), sizeof(completedCount));
 
 	for (int i = 0; i < completedTasks.size(); i++)
 	{
 		WriteStringBinary(file, completedTasks[i].GetTitle());
-		WriteStringBinary(file, completedTasks[i].GetPriority());
+		WriteStringBinary(file, completedTasks[i].GetPriorityText());
 		WriteStringBinary(file, completedTasks[i].GetCategory());
 	}
 	file.close();
@@ -261,7 +262,8 @@ void TaskManager::LoadFromBinaryFile(std::string fileName)
 	for (int i = 0; i < activeCount; i++)
 	{
 		std::string title = ReadStringBinary(file);
-		Priority priority = ReadStringBinary(file);
+		std::string stringPriority = ReadStringBinary(file);
+		Priority priority = ConvertTextPriority(stringPriority);
 		std::string category = ReadStringBinary(file);
 
 		activeTasks.push_back(Task(title, priority, category, false));
@@ -272,7 +274,8 @@ void TaskManager::LoadFromBinaryFile(std::string fileName)
 	for (int i = 0; i < completedCount; i++)
 	{
 		std::string title = ReadStringBinary(file);
-		Priority priority = ReadStringBinary(file);
+		std::string stringPriority = ReadStringBinary(file);
+		Priority priority = ConvertTextPriority(stringPriority);
 		std::string category = ReadStringBinary(file);
 
 		completedTasks.push_back(Task(title, priority, category, true));
@@ -281,3 +284,17 @@ void TaskManager::LoadFromBinaryFile(std::string fileName)
 
 	std::cout << "\nTasks loaded from binary file successfully.\n";
 }
+
+Priority TaskManager::ConvertTextPriority(std::string textPriority)
+{
+	if (textPriority == "1"  || textPriority == "Low")
+	{
+		return Priority::Low;
+	}
+	else if (textPriority == "2"  || textPriority == "Medium")
+	{
+		return Priority::Medium;
+	}
+	return Priority::High;
+}
+
