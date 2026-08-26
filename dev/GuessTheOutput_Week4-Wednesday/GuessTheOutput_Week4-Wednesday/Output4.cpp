@@ -39,6 +39,6 @@ int main()
     return 0;
 }
 //A.Gerald awakens. - 4
-//B.Gerald awakens. 0
+//B.Gerald awakens. 0 - THIS ONE
 //C. 8
 //D.The code does not compile.

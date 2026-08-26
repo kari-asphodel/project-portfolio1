@@ -19,6 +19,6 @@ int main()
     return 0;
 }
 //A. 15
-//B. 12
+//B. 12 - THIS ONE
 //C. 9
 //D.Infinite loop
