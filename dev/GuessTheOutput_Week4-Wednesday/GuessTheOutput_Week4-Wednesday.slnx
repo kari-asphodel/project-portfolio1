@@ -4,5 +4,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="GuessTheOutput_Week4/GuessTheOutput_Week4.vcxproj" Id="fef6d5ad-6a74-4aed-8ca5-9cfba0af1cd2" />
+  <Project Path="GuessTheOutput_Week4-Wednesday/GuessTheOutput_Week4-Wednesday.vcxproj" Id="b0fb602f-1887-4a26-8efe-e0e0e21681db" />
 </Solution>
