@@ -21,7 +21,7 @@ public:
     }
 };
 
-void collectRelic(Inventory inventory)
+void collectRelic(Inventory& inventory)
 {
     inventory.addItem("Cursed Crown");
 }

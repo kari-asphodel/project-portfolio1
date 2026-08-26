@@ -15,7 +15,7 @@ void Player::load()
     std::ifstream inputFile("save.txt");
 
     inputFile >> name;
-    inputFile >> gold;
     inputFile >> health;
+    inputFile >> gold;
     inputFile.close();
 }

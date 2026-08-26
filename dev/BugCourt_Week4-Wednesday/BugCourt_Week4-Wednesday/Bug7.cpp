@@ -17,8 +17,9 @@ void Bug7()
     {
         displayItems();
     }
-    else if (choice == 5)
+    else if (choice == 4)
     {
         running = false;
+        std::cout << "Goodbye.";
     }
 }

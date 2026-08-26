@@ -6,7 +6,7 @@ void Bug2()
     case 1:
         std::cout << "A potion was used.\n";
         health += 10;
-
+        break;
     case 2:
         std::cout << "The player fled.\n";
         running = false;

@@ -1,7 +1,7 @@
 #include <iostream>
 void Player::usePotion(int amount)
 {
-    health - amount;
+    health -= amount;
 
     std::cout << "Health: " << health << "\n";
 }
