@@ -17,7 +17,8 @@ private:
 	bool completed;
 
 public:
-	Task(std::string taskTask, Priority taskPriority, std::string taskCategory);
+	Task(std::string taskTask, Priority taskPriority, std::string taskCategory, bool taskCompleted = false);
+	Task();
 
 	std::string GetTitle()const;
 	Priority GetPriority() const;
@@ -26,5 +27,7 @@ public:
 	bool IsCompleted() const;
 
 	void CompleteTask();
+
+	std::string ToTextLine() const;
 };
 
